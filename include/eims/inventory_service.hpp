@@ -11,6 +11,7 @@ public:
     void adjustStock(int productId, int delta, const std::string& reason);
     std::vector<Product> products() const;
     std::vector<Product> lowStock() const;
+    std::vector<Product> CheckLowStock();
 private:
     InventoryRepository& repository_;
     static void validateProduct(const Product& product);
