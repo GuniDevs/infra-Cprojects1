@@ -34,7 +34,7 @@ std::vector<Product> InventoryService::products() const { return repository_.get
 std::vector<Product> InventoryService::lowStock() const { return repository_.getLowStockProducts(); }
 std::vector<Product> InventoryService::CheckLowStock()
 {
-    auto products = repository.GetAllProducts();
+    auto products = repository_.products();
 
     std::vector<Product> lowStockProducts;
 
