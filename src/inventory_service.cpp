@@ -32,4 +32,20 @@ void InventoryService::adjustStock(int productId, int delta, const std::string& 
 }
 std::vector<Product> InventoryService::products() const { return repository_.getProducts(); }
 std::vector<Product> InventoryService::lowStock() const { return repository_.getLowStockProducts(); }
+std::vector<Product> InventoryService::CheckLowStock()
+{
+    auto products = repository.GetAllProducts();
+
+    std::vector<Product> lowStockProducts;
+
+    for (const auto& product : products)
+    {
+        if (product.quantity <= product.reorderLevel)
+        {
+            lowStockProducts.push_back(product);
+        }
+    }
+
+    return lowStockProducts;
+}
 }
