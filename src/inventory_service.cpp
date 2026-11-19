@@ -16,7 +16,7 @@ void InventoryService::validateProduct(const Product& p) {
     if (!hasText(p.category)) throw std::invalid_argument("Category is required");
     if (p.quantity < 0) throw std::invalid_argument("Quantity cannot be negative");
     if (p.reorderLevel < 0) throw std::invalid_argument("Reorder level cannot be negative");
-    if (!std::isfinite(p.unitPrice) || p.unitPrice < 0) throw std::invalid_argument("Unit price must be a finite non-negative number");)
+    if (!std::isfinite(p.unitPrice) || p.unitPrice < 0) throw std::invalid_argument("Unit price must be a finite non-negative number");
 }
 int InventoryService::createProduct(Product p) {
     validateProduct(p); return repository_.addProduct(p);
