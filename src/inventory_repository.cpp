@@ -47,11 +47,17 @@ std::optional<Product> InventoryRepository::getProduct(int id) const {
 void InventoryRepository::updateProduct(const Product& p) {
     Statement s(db_.handle(), "UPDATE products SET sku=?,name=?,category=?,reorder_level=?,unit_price=? WHERE id=?");
     s.bind(1,p.sku); s.bind(2,p.name); s.bind(3,p.category); s.bind(4,p.reorderLevel); s.bind(5,p.unitPrice); s.bind(6,p.id); s.execute();
-    if (sqlite3_changes(db_.handle()) == 0) throw std::runtime_error("Product not found"); audit("UPDATE","PRODUCT",p.id,p.sku);
+    if (sqlite3_changes(db_.handle()) == 0) {
+        throw std::runtime_error("Product not found");
+    }
+    audit("UPDATE", "PRODUCT", p.id, p.sku);
 }
 void InventoryRepository::deleteProduct(int id) {
     Statement s(db_.handle(), "DELETE FROM products WHERE id=?"); s.bind(1,id); s.execute();
-    if (sqlite3_changes(db_.handle()) == 0) throw std::runtime_error("Product not found"); audit("DELETE","PRODUCT",id,"Product deleted");
+    if (sqlite3_changes(db_.handle()) == 0) {
+        throw std::runtime_error("Product not found");
+    }
+    audit("DELETE", "PRODUCT", id, "Product deleted");
 }
 void InventoryRepository::changeStock(int productId, int delta, const std::string& reason) {
     if (delta == 0) throw std::invalid_argument("Stock change cannot be zero");
