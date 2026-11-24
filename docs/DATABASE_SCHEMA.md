@@ -7,3 +7,4 @@
 - `audit_logs`: records create/update/delete/stock/receipt actions.
 
 SQLite foreign-key enforcement is enabled at connection startup. Stock changes and purchase-order receipt use `BEGIN IMMEDIATE` transactions so stock, movement and audit writes commit or roll back together.
+testing
