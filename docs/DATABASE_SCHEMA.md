@@ -1,4 +1,4 @@
-# Database schema
+# Database schemadddd
 
 - `products`: unique SKU, category, quantity, reorder threshold and unit price.
 - `suppliers`: supplier name and contact details.
