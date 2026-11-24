@@ -50,7 +50,7 @@ int main() {
                         std::cout << "Supplier created. ID: " << repository.addSupplier(s) << '\n'; break;
                     }
                     case 6: {
-                        PurchaseOrder p; p.supplierId=readInt("Supplier ID: "); p.productId=readInt("Product ID: "); p.quantity=readInt("Order quantity: ");
+                        PurchaseOrder p; p.supplierId=readInt("Supplier1 ID: "); p.productId=readInt("Product ID: "); p.quantity=readInt("Order quantity: ");
                         std::cout << "Purchase order created. ID: " << repository.createPurchaseOrder(p) << '\n'; break;
                     }
                     case 7: repository.receivePurchaseOrder(readInt("Purchase order ID: ")); std::cout << "Purchase order received and stock updated.\n"; break;
